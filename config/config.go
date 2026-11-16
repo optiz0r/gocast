@@ -22,7 +22,6 @@ type PeerConfig struct {
 	PeerIP      string   `yaml:"peer_ip"`
 	PeerAS      int      `yaml:"peer_as"`
 	MultiHop    *bool    `yaml:"multi_hop,omitempty"`
-	Communities []string `yaml:"communities,omitempty"`
 	MD5Password string   `yaml:"md5_password,omitempty"`
 	MD5EnvVar   string   `yaml:"md5_env_var,omitempty"`
 }
@@ -33,6 +32,8 @@ type BgpConfig struct {
 	// Legacy single-peer config (deprecated but supported for backward compatibility)
 	PeerAS      int          `yaml:"peer_as,omitempty"`
 	PeerIP      string       `yaml:"peer_ip,omitempty"`
+	// Shorthand for peers that only need an IP (they use the top-level peer_as)
+	PeerIPs     []string     `yaml:"peer_ips,omitempty"`
 	// New multi-peer config
 	Peers       []PeerConfig `yaml:"peers,omitempty"`
 	Communities []string
